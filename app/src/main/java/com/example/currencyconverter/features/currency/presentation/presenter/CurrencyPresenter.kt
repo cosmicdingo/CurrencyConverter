@@ -7,6 +7,6 @@ import com.example.currencyconverter.features.currency.domain.model.Currency
 interface CurrencyPresenter : BasePresenter {
 
     interface View: BaseView {
-        fun showCurrentCurrencies(currencies: List<Currency>)
+        fun showCurrencies(currencies: List<Currency>?)
     }
 }

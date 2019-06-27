@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Currency converter</string>
+    <string name="nominal_title">Номинал</string>
+    <string name="currency_char_code_title">Символьный код</string>
+    <string name="ru_char_code">RU</string>
+    <string name="value_title">Значение</string>
 </resources>

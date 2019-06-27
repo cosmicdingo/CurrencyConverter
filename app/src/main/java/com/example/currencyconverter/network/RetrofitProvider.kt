@@ -6,7 +6,7 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 
 class RetrofitProvider {
 
-    private val BASE_URL = "www.cbr.ru/"
+    private val BASE_URL = "http://www.cbr.ru/scripts/"
     val retrofit: Retrofit
 
     init {
