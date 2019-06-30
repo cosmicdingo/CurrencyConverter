@@ -4,4 +4,6 @@
     <string name="currency_char_code_title">Символьный код</string>
     <string name="ru_char_code">RU</string>
     <string name="value_title">Значение</string>
+
+    <string name="AMD">AMD</string>
 </resources>

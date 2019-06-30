@@ -4,6 +4,8 @@ import android.content.Context
 import com.example.currencyconverter.App
 import com.example.currencyconverter.features.currency.data.CurrencyRepositoryImpl
 import com.example.currencyconverter.features.currency.data.api.CurrencyApi
+import com.example.currencyconverter.features.currency.data.datasource.network.NetworkCurrencyDataSource
+import com.example.currencyconverter.features.currency.data.datasource.network.impl.NetworkCurrencyDataSourceImpl
 import com.example.currencyconverter.features.currency.domain.interactors.CurrencyInteractor
 import com.example.currencyconverter.features.currency.domain.interactors.impl.CurrencyInteractorImpl
 import com.example.currencyconverter.features.currency.domain.repository.CurrencyRepository
@@ -20,7 +22,8 @@ class PresenterFactory {
                 ?.retrofit
                 ?.create(CurrencyApi::class.java)
 
-            val repository: CurrencyRepository = CurrencyRepositoryImpl(api)
+            val datasource: NetworkCurrencyDataSource = NetworkCurrencyDataSourceImpl(api)
+            val repository: CurrencyRepository = CurrencyRepositoryImpl(datasource)
             val interactor: CurrencyInteractor = CurrencyInteractorImpl(repository)
 
             return CurrencyPresenterImpl(

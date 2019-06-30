@@ -1,16 +1,23 @@
 package com.example.currencyconverter.features.currency.data
 
-import com.example.currencyconverter.features.currency.data.api.CurrencyApi
-import com.example.currencyconverter.features.currency.domain.model.ValCurs
+import com.example.currencyconverter.features.currency.data.datasource.local.LocalCurrencyDataSource
+import com.example.currencyconverter.features.currency.data.datasource.network.NetworkCurrencyDataSource
+import com.example.currencyconverter.features.currency.domain.model.daily.ValCurs
+import com.example.currencyconverter.features.currency.domain.model.info.Valute
 import com.example.currencyconverter.features.currency.domain.repository.CurrencyRepository
+import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
-class CurrencyRepositoryImpl(private val api: CurrencyApi?) : CurrencyRepository {
-    override fun getCurrenciesFromNetwork(): Observable<ValCurs> {
-        return api!!.getCurrencies()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
+class CurrencyRepositoryImpl(
+    private val networkDataSource: NetworkCurrencyDataSource,
+    private val localDataSource: LocalCurrencyDataSource
+) : CurrencyRepository {
+
+    override fun getCurrenciesFromNetwork(): Observable<ValCurs> = networkDataSource.getCurrenciesFromNetwork()
+
+    override fun getCurrenciesInfoFromNetwork(): Observable<Valute> = networkDataSource.getCurrenciesInfoFromNetwork()
+
+    override fun putCurrenciesInDatabase(): Completable = localDataSource.putCurrenciesInDatabase()
+
+    override fun putCurrenciesInfoInDatabase(): Completable = localDataSource.putCurrenciesInfoInDatabase()
 }

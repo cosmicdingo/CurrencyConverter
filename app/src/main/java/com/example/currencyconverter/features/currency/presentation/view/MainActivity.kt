@@ -8,7 +8,7 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.currencyconverter.R
-import com.example.currencyconverter.features.currency.domain.model.Currency
+import com.example.currencyconverter.features.currency.domain.model.daily.Currency
 import com.example.currencyconverter.features.currency.presentation.adapter.CurrencyAdapter
 import com.example.currencyconverter.features.currency.presentation.presenter.CurrencyPresenter
 import com.example.currencyconverter.features.currency.presentation.presenter.factory.PresenterFactory
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), CurrencyPresenter.View {
     override fun onResume() {
         Log.d(TAG, "onResume")
         super.onResume()
-        presenter?.onResume()
+        presenter?.onStart()
     }
 
     fun initUI() {
