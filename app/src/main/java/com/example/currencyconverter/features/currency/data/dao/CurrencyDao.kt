@@ -1,9 +1,6 @@
 package com.example.currencyconverter.features.currency.data.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.currencyconverter.features.currency.data.entity.CurrencyEntity
 import com.example.currencyconverter.features.currency.data.entity.CurrencyWithInfo
 import io.reactivex.Single
@@ -22,9 +19,6 @@ interface CurrencyDao {
     )
     fun CurrenciesWithInfo(): Single<List<CurrencyWithInfo>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCurrencies(curruncies: List<CurrencyEntity>)
-
-    @Update
-    fun updateCurrencies(curruncies: List<CurrencyEntity>)
 }

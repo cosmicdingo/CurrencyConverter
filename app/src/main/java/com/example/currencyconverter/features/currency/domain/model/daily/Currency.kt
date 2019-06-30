@@ -14,8 +14,8 @@ data class Currency @JvmOverloads constructor(
     var charCode: String = "",
     @field:Element(name = "Nominal")
     var nominal: Int = -1,
-    @field:Element(name = "Name")
-    var name: String = "",
+    //@field:Element(name = "Name")
+    //var name: String = "",
     @field:Element(name = "Value")
     var value: String = ""
 )

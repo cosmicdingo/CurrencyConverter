@@ -2,6 +2,7 @@ package com.example.currencyconverter.features.currency.presentation.presenter.i
 
 import android.annotation.SuppressLint
 import android.util.Log
+import com.example.currencyconverter.R
 import com.example.currencyconverter.extension.toDouble
 import com.example.currencyconverter.features.currency.domain.interactors.CurrencyInteractor
 import com.example.currencyconverter.features.currency.domain.model.daily.ValCurs
@@ -14,7 +15,7 @@ class CurrencyPresenterImpl(
 ) : CurrencyPresenter {
 
     private val TAG = "CurrencyPresenterImpl"
-    override fun onStart() {
+    override fun onRecieve() {
         Log.d(TAG, "onResume")
         loadCurrencies()
         loadCurrenciesInfo()
@@ -26,16 +27,20 @@ class CurrencyPresenterImpl(
         interactor.getCurrenciesFromNetwork().subscribe(
             { t: ValCurs ->
                 Log.d(TAG, "ValCurs.size = ${t.currencies?.size}")
-                //view.showCurrencies(t.currencies)
-               t.currencies?.forEach {
-                   Log.d(TAG, "ValCurs.ID = ${it.id}")
-                   Log.d(TAG, "ValCurs.charCode = ${it.charCode}")
-                   Log.d(TAG, "ValCurs.nominal = ${it.nominal}")
-                   Log.d(TAG, "ValCurs.value = ${it.value.toDouble(',')}")
-               }
+                interactor.putCurrenciesInDatabase(t.currencies).subscribe(
+                    {
+                        Log.d(TAG, "currencies added id database")
+                        view.startActivity()
+                    },
+                    { error ->
+                        error.printStackTrace()
+                        Log.d(TAG, "currencies are not added id database")
+                    }
+                )
             },
             { error ->
                 error.printStackTrace()
+                view.showError()
             }
         )
     }
@@ -45,17 +50,17 @@ class CurrencyPresenterImpl(
         interactor.getCurrenciesInfoFromNetwork().subscribe(
             { t: Valute ->
                 Log.d(TAG, "Valute.size = ${t.currenciesInfo?.size}")
-                /*t.currenciesInfo?.forEach {
-                    Log.d(TAG, "Valute.ID = ${it.id}")
-                    Log.d(TAG, "Valute.name = ${it.name}")
-                    Log.d(TAG, "Valute.charCode = ${it.charCode}")
-                    Log.d(TAG, "Valute.numCode = ${it.numCode}")
-                }*/
+                interactor.putCurrenciesInfoInDatabase(t.currenciesInfo).subscribe(
+                    { Log.d(TAG, "currenciesInfo added id database") },
+                    { error ->
+                        error.printStackTrace()
+                        Log.d(TAG, "currenciesInfo are not added id database")
+                    }
+                )
             },
             { error ->
                 error.printStackTrace()
             }
         )
     }
-
 }

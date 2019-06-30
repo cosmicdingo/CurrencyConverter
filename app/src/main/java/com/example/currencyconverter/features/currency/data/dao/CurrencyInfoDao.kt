@@ -12,8 +12,8 @@ import io.reactivex.Single
 interface CurrencyInfoDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertCurrenciesInfo(currenciesInfo: CurrencyInfoEntity)
+    fun insertCurrenciesInfo(currenciesInfo: List<CurrencyInfoEntity>)
 
     @Query("SELECT * FROM CurrencyInfoEntity")
-    fun getCurrenciesInfo(): Single<List<CurrencyInfo>>
+    fun getCurrenciesInfo(): Single<List<CurrencyInfoEntity>>
 }

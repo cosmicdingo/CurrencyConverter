@@ -1,7 +1,9 @@
 package com.example.currencyconverter.features.currency.domain.interactors.impl
 
 import com.example.currencyconverter.features.currency.domain.interactors.CurrencyInteractor
+import com.example.currencyconverter.features.currency.domain.model.daily.Currency
 import com.example.currencyconverter.features.currency.domain.model.daily.ValCurs
+import com.example.currencyconverter.features.currency.domain.model.info.CurrencyInfo
 import com.example.currencyconverter.features.currency.domain.model.info.Valute
 import com.example.currencyconverter.features.currency.domain.repository.CurrencyRepository
 import io.reactivex.Completable
@@ -13,7 +15,9 @@ class CurrencyInteractorImpl(private val repository: CurrencyRepository) : Curre
 
     override fun getCurrenciesInfoFromNetwork(): Observable<Valute> = repository.getCurrenciesInfoFromNetwork()
 
-    override fun putCurrenciesInDatabase(): Completable = repository.putCurrenciesInDatabase()
+    override fun putCurrenciesInDatabase(currencies: List<Currency>?): Completable =
+        repository.putCurrenciesInDatabase(currencies)
 
-    override fun putCurrenciesInfoInDatabase(): Completable = repository.putCurrenciesInfoInDatabase()
+    override fun putCurrenciesInfoInDatabase(currenciesInfo: List<CurrencyInfo>?): Completable =
+        repository.putCurrenciesInfoInDatabase(currenciesInfo)
 }

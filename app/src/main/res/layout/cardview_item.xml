@@ -6,89 +6,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cardView"
-        android:layout_margin="8dp"
+        android:layout_margin="5dp"
         cardview:cardElevation="6dp"
         cardview:cardCornerRadius="6dp">
+
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/layout_vertical_margin">
+            android:orientation="horizontal"
+            android:layout_margin="8dp">
 
         <TextView
                 android:id="@+id/tvName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/textview_horizontal_margin"
                 android:textStyle="bold"
                 tools:text="Фунт стерлингов Соединенного королевства"/>
 
-        <LinearLayout
-                android:layout_width="match_parent"
+        <TextView
+                android:id="@+id/tvCharCode"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/layout_vertical_margin">
-
-            <TextView
-                    android:layout_width="@dimen/textview_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/textview_horizontal_margin"
-                    android:text="@string/currency_char_code_title"/>
-
-            <TextView
-                    android:id="@+id/tvCharCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="GBP"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/layout_vertical_margin">
-
-            <TextView
-                    android:layout_width="@dimen/textview_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/textview_horizontal_margin"
-                    android:text="@string/nominal_title"/>
-
-            <TextView
-                    android:id="@+id/tvNominal"
-                    android:layout_width="@dimen/textview_numeric_width"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/textview_vertical_margin"
-                    tools:text="90,6652"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <TextView
-                    android:layout_width="@dimen/textview_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/textview_vertical_margin"
-                    android:text="@string/value_title"/>
-
-            <TextView
-                    android:id="@+id/tvValue"
-                    android:layout_width="@dimen/textview_numeric_width"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/textview_vertical_margin"
-                    tools:text="100"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ru_char_code"/>
-
-        </LinearLayout>
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                tools:text="@string/ru_char_code"/>
 
     </LinearLayout>
 

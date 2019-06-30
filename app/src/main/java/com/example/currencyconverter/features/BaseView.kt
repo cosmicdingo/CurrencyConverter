@@ -2,9 +2,12 @@ package com.example.currencyconverter.features
 
 interface BaseView {
 
-    fun showProgress()
+    //fun startActivity()
 
-    fun hideProgress()
+    /*fun showProgress()
 
-    fun showError(message: String?)
+    fun hideProgress()*/
+
+    //fun showError(message: String?)
+    fun showError()
 }

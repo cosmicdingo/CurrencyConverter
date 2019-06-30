@@ -6,4 +6,6 @@
     <string name="value_title">Значение</string>
 
     <string name="AMD">AMD</string>
+    <string name="connection_error">Отсутствует подключение к интернету</string>
+    <string name="loading_data_error">Данные не были загружены</string>
 </resources>
