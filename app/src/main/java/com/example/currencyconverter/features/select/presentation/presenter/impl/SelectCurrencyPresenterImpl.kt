@@ -1,9 +1,8 @@
 package com.example.currencyconverter.features.select.presentation.presenter.impl
 
 import android.annotation.SuppressLint
-import android.util.Log
-import com.example.currencyconverter.features.currency.domain.model.info.CurrencyInfo
 import com.example.currencyconverter.features.select.domain.interactors.SelectCurrencyInteractor
+import com.example.currencyconverter.features.select.domain.model.CurrencyInfoWithoutId
 import com.example.currencyconverter.features.select.presentation.presenter.SelectCurrencyPresenter
 
 class SelectCurrencyPresenterImpl(
@@ -11,23 +10,17 @@ class SelectCurrencyPresenterImpl(
     private val interactor: SelectCurrencyInteractor
 ) : SelectCurrencyPresenter {
 
-    val TAG = "SelectCurrencyPresenter"
     override fun onRecieve() {
-        recieveCurrenciesInfo()
+        recieveCurrenciesList()
     }
 
     @SuppressLint("CheckResult")
-    fun recieveCurrenciesInfo() {
+    fun recieveCurrenciesList() {
         interactor.getCurrenciesInfo().subscribe(
-            { t: List<CurrencyInfo> ->
-                Log.d(TAG, "currencies are get")
-                view.showCurrenciesList(t)
+            { t: MutableList<CurrencyInfoWithoutId> ->
+                view.showCurrenciesList(interactor.addRUCurrencyInfo(t))
             },
-            { t: Throwable? ->
-                Log.d(TAG, "currencies are not get")
-                t?.printStackTrace()
-                view.showError()
-            }
+            { view.showError() }
         )
     }
 }

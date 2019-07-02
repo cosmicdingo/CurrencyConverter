@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.currencyconverter.R
-import com.example.currencyconverter.features.currency.domain.model.info.CurrencyInfo
+import com.example.currencyconverter.features.select.domain.model.CurrencyInfoWithoutId
 import com.example.currencyconverter.features.select.presentation.view.OnSelectCurrencyListener
 
 class SelectCurrencyAdapter(
-    private val currencies: List<CurrencyInfo>?,
+    private val currencies: List<CurrencyInfoWithoutId>?,
     private val onSelectCurrencyListener: OnSelectCurrencyListener
 ) :
     RecyclerView.Adapter<SelectCurrencyAdapter.ViewHolder>() {

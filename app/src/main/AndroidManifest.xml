@@ -13,16 +13,21 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name=".features.currency.presentation.view.SplashScreenActivity" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".features.currency.presentation.view.SplashScreenActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ConverterActivity">
+        <activity
+                android:name=".features.convert.presentation.view.ConverterActivity"
+                android:label="@string/name_convert_activity">
         </activity>
-        <activity android:name=".features.select.presentation.view.SelectCurrencyActivity">
+        <activity
+                android:name=".features.select.presentation.view.SelectCurrencyActivity"
+                android:label="@string/name_select_currency_activity">
         </activity>
     </application>
 

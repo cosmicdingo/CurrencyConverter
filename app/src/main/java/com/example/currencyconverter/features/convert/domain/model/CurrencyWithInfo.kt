@@ -1,4 +1,4 @@
-package com.example.currencyconverter.features.currency.data.entity
+package com.example.currencyconverter.features.convert.domain.model
 
 data class CurrencyWithInfo(
     val name: String,

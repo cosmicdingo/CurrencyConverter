@@ -22,8 +22,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="0.8"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                tools:text="Фунт стерлингов Соединенного королевства"/>
+                android:textStyle="bold"/>
 
         <TextView
                 android:id="@+id/tvCharCode"
@@ -31,8 +30,7 @@
                 android:layout_weight="0.2"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
-                tools:text="@string/ru_char_code"/>
+                android:layout_marginStart="10dp"/>
 
     </LinearLayout>
 

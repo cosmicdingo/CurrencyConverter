@@ -4,20 +4,17 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.currencyconverter.R
-import com.example.currencyconverter.features.currency.domain.model.info.CurrencyInfo
+import com.example.currencyconverter.features.select.domain.model.CurrencyInfoWithoutId
 import com.example.currencyconverter.features.select.presentation.adapter.SelectCurrencyAdapter
 import com.example.currencyconverter.features.select.presentation.presenter.SelectCurrencyPresenter
 import com.example.currencyconverter.features.select.presentation.presenter.factory.SelectCurrencyPresenterFactory
+import kotlinx.android.synthetic.main.activity_select_currency.*
 
 class SelectCurrencyActivity : AppCompatActivity(), SelectCurrencyPresenter.View, OnSelectCurrencyListener {
 
-    private val TAG = "SelectCurrencyActivity"
-    private var recyclerView: RecyclerView? = null
     private var adapter: SelectCurrencyAdapter? = null
 
     private var presenter: SelectCurrencyPresenter? = null
@@ -28,25 +25,18 @@ class SelectCurrencyActivity : AppCompatActivity(), SelectCurrencyPresenter.View
 
         initUI()
         presenter = SelectCurrencyPresenterFactory.createPresenter(this)
-    }
-
-    override fun onResume() {
-        Log.d(TAG, "onResume")
-        super.onResume()
         presenter?.onRecieve()
     }
 
     fun initUI() {
 
-        Log.d(TAG, "initIU")
-        recyclerView = findViewById(R.id.recyclerView)
         val layoutManager = LinearLayoutManager(this)
-        recyclerView?.layoutManager = layoutManager
+        recyclerView.layoutManager = layoutManager
     }
 
-    override fun showCurrenciesList(currencies: List<CurrencyInfo>) {
+    override fun showCurrenciesList(currencies: List<CurrencyInfoWithoutId>) {
         adapter = SelectCurrencyAdapter(currencies, this)
-        recyclerView?.adapter = adapter
+        recyclerView.adapter = adapter
     }
 
     override fun onSelectCurrency(charCode: String) {

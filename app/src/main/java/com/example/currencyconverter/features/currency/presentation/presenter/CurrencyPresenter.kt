@@ -8,7 +8,6 @@ import com.example.currencyconverter.features.currency.domain.model.daily.Curren
 interface CurrencyPresenter : BasePresenter {
 
     interface View: BaseView {
-        //fun showCurrencies(currencies: List<Currency>?)
         fun startActivity()
     }
 }

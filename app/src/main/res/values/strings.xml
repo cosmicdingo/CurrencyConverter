@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Currency converter</string>
-    <string name="nominal_title">Номинал</string>
-    <string name="currency_char_code_title">Символьный код</string>
-    <string name="ru_char_code">RU</string>
-    <string name="value_title">Значение</string>
+    <string name="name_convert_activity">Конвертер валют</string>
+    <string name="name_select_currency_activity">Выбор валют</string>
 
-    <string name="AMD">AMD</string>
     <string name="connection_error">Отсутствует подключение к интернету</string>
     <string name="loading_data_error">Данные не были загружены</string>
+    <string name="not_find">Не найдено</string>
+    <string name="ru">RUB</string>
+    <string name="usd">USD</string>
 </resources>

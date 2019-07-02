@@ -14,28 +14,18 @@ class CurrencyPresenterImpl(
     private val interactor: CurrencyInteractor
 ) : CurrencyPresenter {
 
-    private val TAG = "CurrencyPresenterImpl"
     override fun onRecieve() {
-        Log.d(TAG, "onResume")
         loadCurrencies()
         loadCurrenciesInfo()
     }
 
     @SuppressLint("CheckResult")
     private fun loadCurrencies() {
-        Log.d(TAG, "loadCurrencies")
         interactor.getCurrenciesFromNetwork().subscribe(
             { t: ValCurs ->
-                Log.d(TAG, "ValCurs.size = ${t.currencies?.size}")
                 interactor.putCurrenciesInDatabase(t.currencies).subscribe(
-                    {
-                        Log.d(TAG, "currencies added id database")
-                        view.startActivity()
-                    },
-                    { error ->
-                        error.printStackTrace()
-                        Log.d(TAG, "currencies are not added id database")
-                    }
+                    { view.startActivity() },
+                    { error -> error.printStackTrace() }
                 )
             },
             { error ->
@@ -49,18 +39,12 @@ class CurrencyPresenterImpl(
     private fun loadCurrenciesInfo() {
         interactor.getCurrenciesInfoFromNetwork().subscribe(
             { t: Valute ->
-                Log.d(TAG, "Valute.size = ${t.currenciesInfo?.size}")
                 interactor.putCurrenciesInfoInDatabase(t.currenciesInfo).subscribe(
-                    { Log.d(TAG, "currenciesInfo added id database") },
-                    { error ->
-                        error.printStackTrace()
-                        Log.d(TAG, "currenciesInfo are not added id database")
-                    }
+                    { },
+                    { error -> error.printStackTrace() }
                 )
             },
-            { error ->
-                error.printStackTrace()
-            }
+            { error -> error.printStackTrace() }
         )
     }
 }
